@@ -1,0 +1,12 @@
+artifact_name,artifact_type,phase,relative_path,description,source_data,status,validation_status,generated_at,notes
+README.md,documentation,Phase_1_Data_Lock,Phase_1_Data_Lock/README.md,Phase overview and Data Lock instructions,SPIT CNS Guidelines,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,Canonical phase readme
+project_requirements.md,specification,Phase_1_Data_Lock,Phase_1_Data_Lock/project_requirements.md,Detailed institutional and cryptographic requirements,Faculty Manifest PDF,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,Maps SPIT CNS week 1 milestone
+experiment_config.json,configuration,Phase_1_Data_Lock,Phase_1_Data_Lock/experiment_config.json,Locked experimental parameters (14 keys 5 workloads),Cryptographic design specs,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,Strict key and size definitions
+environment_info.json,audit_record,Phase_1_Data_Lock,Phase_1_Data_Lock/environment_info.json,Hardware CPU RAM OS and Python library versions,system_info.py,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,Guarantees baseline reproducibility
+test_file_manifest.csv,dataset_manifest,Phase_1_Data_Lock,Phase_1_Data_Lock/test_file_manifest.csv,Table of 5 test workloads byte sizes and SHA256 hashes,hashlib verification,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,All 5 files verified
+payload_1024.bin,binary_workload,Phase_1_Data_Lock,Phase_1_Data_Lock/test_data/payload_1024.bin,1 KiB deterministic test payload,deterministic_seed,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,Exact 1024 bytes
+payload_102400.bin,binary_workload,Phase_1_Data_Lock,Phase_1_Data_Lock/test_data/payload_102400.bin,100 KiB deterministic test payload,deterministic_seed,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,Exact 102400 bytes
+payload_1048576.bin,binary_workload,Phase_1_Data_Lock,Phase_1_Data_Lock/test_data/payload_1048576.bin,1 MiB deterministic test payload,deterministic_seed,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,Exact 1048576 bytes
+payload_10485760.bin,binary_workload,Phase_1_Data_Lock,Phase_1_Data_Lock/test_data/payload_10485760.bin,10 MiB deterministic test payload,deterministic_seed,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,Exact 10485760 bytes
+payload_52428800.bin,binary_workload,Phase_1_Data_Lock,Phase_1_Data_Lock/test_data/payload_52428800.bin,50 MiB deterministic test payload,deterministic_seed,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,Exact 52428800 bytes
+phase_1_validation.txt,validation_gate,Phase_1_Data_Lock,Phase_1_Data_Lock/validation/phase_1_validation.txt,Phase 1 audit gate sign-off,validation_script,COMPLETED,VALIDATED,2026-10-28T19:56:00Z,All 5 checks passed

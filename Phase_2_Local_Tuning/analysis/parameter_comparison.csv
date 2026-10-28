@@ -1,0 +1,7 @@
+parameter_dimension,candidate_values,evaluated_metric,observed_impact,selected_production_default,tuning_rationale
+warmup_iterations,"0, 1, 3, 5",throughput_variance_cv,0 warmups caused 35% CV spike on cold-start; 3 warmups stabilized CV under 12%,3,Eliminates JIT/cache cold-start without excessive benchmarking time
+operational_mode,"CBC, CTR",throughput_and_security,CBC requires PKCS7 padding; CTR is stream-mode. Both exhibit identical Feistel throughput (~140 MiB/s),CBC,NIST SP 800-38A standard confidentiality baseline
+execution_model,"in_memory_steady_state, streaming_file_io",memory_and_io_isolation,Streaming limits memory to 64 KiB chunks but introduces disk I/O noise; in-memory isolates CPU core,in_memory_steady_state,Strictly isolates cryptographic subkey and Feistel algorithm from disk controller
+key_sampling_policy,"4_key_pilot, 14_key_exhaustive",key_schedule_coverage,14 keys cover all 32-bit increments from 32 to 448 bits,14_key_exhaustive,Full coverage ensures no boundary vulnerabilities or anomalies are missed
+timing_timer,"time.time, time.perf_counter_ns",timer_granularity,time.time has 15.6 ms resolution on Windows; perf_counter_ns has <100 ns,time.perf_counter_ns,Mandatory for microsecond-level cryptographic cipher initialization
+padding_scheme,"PKCS#7, ZeroPadding, ANSI_X923",padding_security_and_standard,PKCS#7 natively supports arbitrary byte lengths and detects corruption,PKCS#7,Universal standard for 64-bit block ciphers

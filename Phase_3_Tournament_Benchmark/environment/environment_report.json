@@ -1,0 +1,32 @@
+{
+    "operating_system": {
+        "system": "Windows",
+        "release": "10",
+        "version": "10.0.26300",
+        "platform": "Windows-10-10.0.26300-SP0"
+    },
+    "hardware": {
+        "cpu_model": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+        "cpu_architecture": "AMD64",
+        "logical_cores": 16,
+        "physical_cores": 12,
+        "cpu_freq_mhz": 2200.0,
+        "total_ram_bytes": 16849256448,
+        "total_ram_gib": 15.692,
+        "available_ram_gib": 1.927
+    },
+    "runtime": {
+        "python_version": "3.9.13",
+        "python_build": "tags/v3.9.13:6de2ca5",
+        "python_compiler": "MSC v.1929 64 bit (AMD64)",
+        "python_implementation": "CPython"
+    },
+    "dependencies": {
+        "pycryptodome": "4.2.0",
+        "numpy": "2.0.2",
+        "pandas": "2.3.3",
+        "matplotlib": "3.9.4",
+        "scipy": "1.13.1",
+        "psutil": "7.2.2"
+    }
+}

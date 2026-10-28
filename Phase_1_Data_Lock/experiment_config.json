@@ -1,0 +1,36 @@
+{
+  "phase": "Phase_1_Data_Lock",
+  "project_name": "cns ise",
+  "cipher_framework": "The Flexible Variable-Key Block Cipher Framework (Blowfish)",
+  "research_title": "Variable Key Length Impacts on Memory Allocation and Throughput in Blowfish Cryptographic Frameworks",
+  "course": "Cryptography and Network Security (CNS) A.Y. 2026-27",
+  "faculty": "Prof. Renuka Pawar",
+  "institution": "Sardar Patel Institute of Technology, Mumbai",
+  "key_lengths_bits": [32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448],
+  "key_lengths_bytes": [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56],
+  "workload_file_sizes": [
+    { "label": "1 KiB", "bytes": 1024, "filename": "payload_1024.bin" },
+    { "label": "100 KiB", "bytes": 102400, "filename": "payload_102400.bin" },
+    { "label": "1 MiB", "bytes": 1048576, "filename": "payload_1048576.bin" },
+    { "label": "10 MiB", "bytes": 10485760, "filename": "payload_10485760.bin" },
+    { "label": "50 MiB", "bytes": 52428800, "filename": "payload_52428800.bin" }
+  ],
+  "cipher_specifications": {
+    "algorithm": "Blowfish",
+    "feistel_rounds": 16,
+    "block_size_bytes": 8,
+    "block_size_bits": 64,
+    "operational_mode": "CBC",
+    "padding_standard": "PKCS#7",
+    "iv_generator": "cryptographic_random_secrets",
+    "iv_length_bytes": 8
+  },
+  "benchmark_protocol": {
+    "warmup_iterations": 3,
+    "measured_repetitions": 10,
+    "key_schedule_repetitions": 30,
+    "total_planned_raw_trials": 1820,
+    "valid_summary_trials": 1400
+  },
+  "data_lock_status": "LOCKED"
+}
