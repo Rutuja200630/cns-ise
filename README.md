@@ -112,11 +112,14 @@ Get-ChildItem FINAL_SUBMISSION/
 
 ---
 
-## 3. Key Empirical Findings (Summary of Validated Results)
+## 3. Key Empirical Findings (Summary of Audited & Validated Results)
 
 All data was measured on an Intel64 host running Windows 10/11 with 16 GB RAM and PyCryptodome 4.2.0:
-- **Cipher Initialization Latency is Invariant to Key Length:** Across all 14 key sizes, mean initialization time remained tightly bounded between **0.042 ms and 0.104 ms** (ANOVA $F = 1.4023, p = 0.1548 > 0.05$; linear regression $R^2 = 0.0051$). Blowfish subkey expansion is dominated by **521 iterative block encryptions**, rendering initial key-XOR differences undetectable in practice.
-- **Steady-State Throughput is Invariant to Key Length:** Throughput plateaus at **~130 to 195 MiB/s** for workloads $\ge 1\text{ MiB}$ across all 14 key lengths from 32 to 448 bits. Once subkeys are stored in the 18 P-array entries and four S-boxes, the 16-round Feistel transformation executes the identical sequence of operations for every 64-bit block.
-- **Memory Allocation is Invariant to Key Length:** At 50 MiB, peak Python heap memory differed by only **186 bytes** between a 32-bit key and a 448-bit key (due purely to Python byte array representation). Blowfish expanded subkeys occupy a constant **4,168 bytes** in memory.
-- **Cryptographic Correctness:** **100% pass rate** across all 1,820 experimental trials. Every round trip was cryptographically verified via SHA-256 digests.
-- **Security Limitation (The Sweet32 Attack):** Blowfish's 64-bit block size exposes it to collision attacks in CBC mode after encrypting $2^{32}$ blocks (**32 GiB**) under a single key (Bhargavan & Leurent, ACM CCS 2016). Blowfish is therefore deprecated for large data streams.
+- **Audited Cipher Initialization Latency:** By implementing a 5-iteration warm-up policy, dynamic linking cold-start artifacts were isolated from steady-state measurements. Across all 14 key sizes, steady-state mean initialization time remained tightly bounded between **0.056 ms and 0.162 ms** (32-bit key mean: **0.0896 ms**, CV: **33.7%**). Blowfish subkey expansion is dominated by **521 iterative block encryptions**, rendering initial key-XOR differences statistically negligible in practice.
+- **Five-Workload Steady-State Throughput:** Throughput was evaluated across all five workloads: 1 KiB (~6.3–15.9 MiB/s, bound by dispatch overhead), 100 KiB (~371–702 MiB/s, benefiting from CPU L2/L3 cache residency), and 1 MiB, 10 MiB, and 50 MiB (~83–214 MiB/s, reaching memory bus saturation). Throughput is independent of secret key length.
+- **Three-Tier Memory Architecture:**
+  1. *Tier 1 (Theoretical Subkeys):* Invariant at exactly **4,168 bytes** (18 P-array words + 1,024 S-box words).
+  2. *Tier 2 (Python Heap `tracemalloc`):* For the 50 MiB payload, peak heap is **~168.52 MiB**; variance across 32 to 448 bits is $\le 186$ bytes ($<0.0001\%$).
+  3. *Tier 3 (Process RSS `psutil`):* Physical RAM working set is constant at **~265.6 MiB**.
+- **Cryptographic Correctness:** **100% pass rate** across all 1,820 experimental trials. Every round trip was cryptographically verified via SHA-256 digests with zero silent errors.
+- **Security Boundaries (The Sweet32 Attack):** Blowfish's 64-bit block size exposes it to ciphertext block collision attacks in CBC mode after encrypting $2^{32}$ blocks (**32 GiB**) under a single key (Bhargavan & Leurent, ACM CCS 2016). Blowfish is therefore deprecated for high-throughput connections, requiring migration to 128-bit block ciphers such as AES.
