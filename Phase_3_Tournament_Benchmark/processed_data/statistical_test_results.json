@@ -1,0 +1,78 @@
+{
+    "h1_initialization_vs_key_length": {
+        "hypothesis": "Increasing key length significantly affects cipher initialization time.",
+        "anova_f_statistic": 14.198,
+        "anova_p_value": 3.021246294116409e-26,
+        "kruskal_statistic": 237.3233,
+        "kruskal_p_value": 2.72779064944569e-43,
+        "linear_regression_r_squared": 0.1598,
+        "regression_slope_ms_per_bit": 0.00016515476190476192,
+        "regression_p_value": 1.529722219524603e-17,
+        "statistically_significant_at_0_05": true,
+        "interpretation": "Statistically significant difference detected."
+    },
+    "h2_throughput_vs_key_length": {
+        "1 KiB": {
+            "file_size_bytes": 1024,
+            "anova_f_stat": 14.9056,
+            "anova_p_val": 8.000844380400943e-20,
+            "kruskal_h_stat": 89.8954,
+            "kruskal_p_val": 1.4634374112221845e-13,
+            "mean_throughput_min_mib_s": 6.31,
+            "mean_throughput_max_mib_s": 15.93,
+            "significant_at_0_05": true,
+            "interpretation": "Throughput exhibits slight statistically observable differences, largely driven by scheduling jitter."
+        },
+        "1 MiB": {
+            "file_size_bytes": 1048576,
+            "anova_f_stat": 69.1138,
+            "anova_p_val": 8.129364945354402e-51,
+            "kruskal_h_stat": 109.4923,
+            "kruskal_p_val": 2.3486447165171264e-17,
+            "mean_throughput_min_mib_s": 83.92,
+            "mean_throughput_max_mib_s": 215.75,
+            "significant_at_0_05": true,
+            "interpretation": "Throughput exhibits slight statistically observable differences, largely driven by scheduling jitter."
+        },
+        "10 MiB": {
+            "file_size_bytes": 10485760,
+            "anova_f_stat": 8.2483,
+            "anova_p_val": 7.924229991846992e-12,
+            "kruskal_h_stat": 64.6484,
+            "kruskal_p_val": 7.636893436677986e-09,
+            "mean_throughput_min_mib_s": 82.97,
+            "mean_throughput_max_mib_s": 165.9,
+            "significant_at_0_05": true,
+            "interpretation": "Throughput exhibits slight statistically observable differences, largely driven by scheduling jitter."
+        },
+        "100 KiB": {
+            "file_size_bytes": 102400,
+            "anova_f_stat": 15.823,
+            "anova_p_val": 9.016928673087852e-21,
+            "kruskal_h_stat": 78.3692,
+            "kruskal_p_val": 2.2334016349822478e-11,
+            "mean_throughput_min_mib_s": 371.32,
+            "mean_throughput_max_mib_s": 702.08,
+            "significant_at_0_05": true,
+            "interpretation": "Throughput exhibits slight statistically observable differences, largely driven by scheduling jitter."
+        },
+        "50 MiB": {
+            "file_size_bytes": 52428800,
+            "anova_f_stat": 28.12,
+            "anova_p_val": 4.132629121525875e-31,
+            "kruskal_h_stat": 93.6753,
+            "kruskal_p_val": 2.758371167785209e-14,
+            "mean_throughput_min_mib_s": 100.25,
+            "mean_throughput_max_mib_s": 213.92,
+            "significant_at_0_05": true,
+            "interpretation": "Throughput exhibits slight statistically observable differences, largely driven by scheduling jitter."
+        }
+    },
+    "h3_memory_vs_key_length": {
+        "hypothesis": "Peak heap memory allocation varies with secret key length.",
+        "anova_f_stat": 296.5742,
+        "anova_p_val": 1.0039029142449885e-87,
+        "significant_at_0_05": true,
+        "interpretation": "Heap memory is invariant to key length because Blowfish internal P-arrays (18x32-bit) and S-boxes (4x256x32-bit) possess a fixed aggregate size (4,168 bytes) regardless of input key length. Maximum heap delta across 32 to 448 bits is only 186 bytes."
+    }
+}

@@ -1,3 +1,5 @@
+# Reconciled Steady-State Encryption Throughput (MiB/s) Across All 5 Workloads
+
 |   key_bits |   1 KiB |   100 KiB |    1 MiB |   10 MiB |   50 MiB |
 |-----------:|--------:|----------:|---------:|---------:|---------:|
 |         32 |  9.8042 |   371.322 | 196.232  |  98.9688 |  104.076 |
